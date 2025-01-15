@@ -1,0 +1,166 @@
+<LoginScreen>:
+	canvas.before:
+		Color:
+			rgba: 112/256, 128/256, 144/256, 1
+		Rectangle:
+			pos: self.pos
+			size: self.size
+
+	BoxLayout:
+		orientation: "vertical"
+
+		Label:
+			size_hint: 1, 0.1
+
+		Label:
+			text: "Username"
+			font_name: "Fonts/unifont-15.0.01.ttf"
+			font_size: 0.1*self.width
+			size_hint: 1, 0.1
+			
+		TextInput:
+			id: username
+			text: ""
+			font_name: "Fonts/unifont-15.0.01.ttf"
+			font_size: 0.7*self.height
+			size_hint: 0.5, 0.1
+			pos_hint: {'center_x': 0.5}
+			do_wrap: False
+			use_bubble: True
+		
+		Label:
+			size_hint: 1, 0.1
+
+		Label:
+			text: "JSON Web Token"
+			font_name: "Fonts/unifont-15.0.01.ttf"
+			font_size: 0.1*self.width
+			size_hint: 1, 0.1
+			
+		TextInput:
+			id: jwt
+			text: ""
+			font_name: "Fonts/unifont-15.0.01.ttf"
+			font_size: 0.7*self.height
+			size_hint: 0.8, 0.1
+			pos_hint: {'center_x': 0.5}
+			password: True
+			do_wrap: False
+			use_bubble: True
+			
+		Label:
+			size_hint: 1, 0.3
+
+		Button:
+			text: "Login"
+			font_name: "Fonts/unifont-15.0.01.ttf"
+			font_size: 0.3*self.width
+			size_hint: 0.4, 0.1
+			pos_hint: {'center_x': 0.5}
+			on_release: self.parent.parent.login(self.parent.children[5].text, self.parent.children[2].text)
+			
+<MainScreen>:
+	MainWidget:
+
+	
+<MainWidget>:
+	orientation: 'vertical'
+    canvas.before:
+        Color:
+            rgba: 112/256, 128/256, 144/256, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+	Content:
+		
+	Buttons:
+		size_hint: 1, None
+		height: self.width / 4
+		
+
+<Content@Carousel>:
+	min_move: 0.08
+	anim_cancel_duration: 0.1
+	anim_move_duration: 0.1
+	scroll_timeout: 0
+
+	
+	KnownWordsScroll:
+		id: scroll
+	
+
+	Label:
+		text: "COMING SOON"
+		font_name: "Fonts/unifont-15.0.01.ttf"
+		font_size: 0.15*self.width
+		
+	Label:
+		text: "COMING SOON"
+		font_name: "Fonts/unifont-15.0.01.ttf"
+		font_size: 0.15*self.width
+		
+	SettingsTab:
+
+
+
+<Buttons@BoxLayout>:
+	#padding: 25
+	#spacing: 25
+    canvas.before:
+        Color:
+            rgba: 47/256, 79/256, 79/256, 1
+        Rectangle:
+            # self here refers to the widget i.e FloatLayout
+            pos: self.pos
+            size: self.size
+	
+	ToggleButton:
+		size_hint: 0.25, 1
+		on_press: self.parent.parent.slideCarousel(0)
+		group: "Buttons"
+		allow_no_selection: False
+		state: "down"
+		background_normal: "Images/search.png"
+		background_down: "Images/pressed_search.png"
+
+
+	ToggleButton:
+		size_hint: 0.25, 1
+		on_press: self.parent.parent.slideCarousel(1)
+		group: "Buttons"
+		allow_no_selection: False
+		background_normal: "Images/flashcards.png"
+		background_down: "Images/pressed_flashcards.png"
+
+
+	ToggleButton:
+		size_hint: 0.25, 1
+		on_press: self.parent.parent.slideCarousel(2)
+		group: "Buttons"
+		allow_no_selection: False
+		background_normal: "Images/stats.png"
+		background_down: "Images/pressed_stats.png"
+
+
+	ToggleButton:
+		size_hint: 0.25, 1
+		on_press: self.parent.parent.slideCarousel(3)
+		group: "Buttons"
+		allow_no_selection: False
+		background_normal: "Images/settings.png"
+		background_down: "Images/pressed_settings.png"
+
+
+<KnownWordsScroll@ScrollView>:
+	KnownWordsGrid:
+		id: grid
+		size_hint: 1, None
+		height: self.minimum_height
+
+<KnownWordsGrid>:
+	cols: 4
+	
+
+<SettingsTab>:
+	orientation: "vertical"

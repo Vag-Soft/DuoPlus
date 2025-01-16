@@ -1,2 +1,3 @@
 # DuoPlus
- A Python app that connects to your Duolingo account, gets all the words you have learnt from each languages, prints them out in a list along with their translation and pronunciation.
+
+A Python application that connects to your Duolingo account, retrieves all the words you've learned in each language, and displays them in a list along with their translations and pronunciations.
